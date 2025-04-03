@@ -1,0 +1,1 @@
+![Opis obrazka](Schemat.jpg)
