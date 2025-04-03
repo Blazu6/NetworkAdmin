@@ -1,1 +1,1 @@
-![Opis obrazka](Schemat.PNG)
+![Topology](Topology.PNG)
