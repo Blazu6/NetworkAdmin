@@ -1,4 +1,4 @@
-![Topology](Topology.png)
+![Topology](Topology.PNG)
 **Router-on-a-Stick Configuration Guide**
 
 ### **Introduction**
