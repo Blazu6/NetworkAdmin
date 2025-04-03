@@ -11,7 +11,7 @@ Router-on-a-Stick is a networking configuration where a single physical router i
 - **End Devices**: Assigned to different VLANs.
 
 ### **Step-by-Step Configuration**
-#### **Step 1: Configure VLANs on the Switch**
+#### **Step 1: Configure VLANs on the Switch(SW1 as an example)**
 1. Enter privileged EXEC mode:
    ```
    enable
@@ -23,30 +23,31 @@ Router-on-a-Stick is a networking configuration where a single physical router i
 3. Create VLANs:
    ```
    vlan 10
-   name Sales
+   name Sales (not necessary)
    exit
-   vlan 20
+   vlan 30
    name IT
    exit
    ```
 4. Assign switch ports to VLANs:
    ```
-   interface FastEthernet0/1
+   interface range FastEthernet0/1-2
    switchport mode access
    switchport access vlan 10
    exit
-   interface FastEthernet0/2
+   interface range FastEthernet0/3-4
    switchport mode access
    switchport access vlan 20
    exit
    ```
 5. Configure the trunk port to the router:
    ```
-   interface FastEthernet0/24
+   interface GigabitEthernet0/1
    switchport mode trunk
-   switchport trunk allowed vlan 10,20
+   switchport trunk allowed vlan 10,30
    exit
    ```
+   VLAN 20 doesn't need to be added because there are no hosts in this VLAN connected to this switch.
 
 #### **Step 2: Configure the Router**
 1. Enter global configuration mode:
