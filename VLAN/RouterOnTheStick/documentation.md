@@ -47,7 +47,7 @@ Router-on-a-Stick is a networking configuration where a single physical router i
    switchport trunk allowed vlan 10,30
    exit
    ```
-   VLAN 20 doesn't need to be added because there are no hosts in this VLAN connected to this switch.
+   VLAN 20 doesn't need to be added because there are no hosts in this VLAN connected to SW1. By the way, on SW2, you need to create VLAN 30 before allowing this VLAN on a trunk port.
 
 #### **Step 2: Configure the Router**
 1. Enter global configuration mode:
@@ -59,11 +59,15 @@ Router-on-a-Stick is a networking configuration where a single physical router i
    ```
    interface GigabitEthernet0/0.10
    encapsulation dot1Q 10
-   ip address 192.168.10.1 255.255.255.0
+   ip address 10.0.0.62 255.255.255.192
    exit
    interface GigabitEthernet0/0.20
    encapsulation dot1Q 20
-   ip address 192.168.20.1 255.255.255.0
+   ip address 10.0.0.126 255.255.255.192
+   exit
+   interface GigabitEthernet0/0.30
+   encapsulation dot1Q 30
+   ip address 10.0.0.190 255.255.255.192
    exit
    ```
 3. Save the configuration:
@@ -82,7 +86,7 @@ Router-on-a-Stick is a networking configuration where a single physical router i
    ```
 3. Test inter-VLAN communication:
    ```
-   ping 192.168.20.1
+   ping 10.0.0.1 etc.
    ```
 
 ### **Conclusion**
